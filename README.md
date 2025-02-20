@@ -1,3 +1,3 @@
 # DynamicEarth
 
-Codes will be released by late February.
+Codes will be released soon.
