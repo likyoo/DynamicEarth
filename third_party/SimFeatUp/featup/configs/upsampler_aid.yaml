@@ -1,0 +1,40 @@
+# Environment Args
+output_root: './work_dirs/simfeatup_million_aid'
+pytorch_data_dir: 'data/Million-AID'
+submitting_to_aml: false
+
+# Dataset args
+dataset: "million_aid"
+
+# Model Args
+model_type: "xclip"
+activation_type: "token"
+
+# Upsampling args
+outlier_detection: True
+upsampler_type: "jbu_one"
+downsampler_type: "attention"
+max_pad: 20
+max_zoom: 2
+n_jitters: 5
+random_projection: 30
+crf_weight: 0 # 0.001
+filter_ent_weight: 0.0
+tv_weight: 0.0
+rec_img_weight: 0.1
+
+implicit_sup_weight: 1.0
+
+# Training args
+batch_size: 4
+epochs: 1
+num_gpus: 2
+num_workers: 4
+lr: 1e-3
+
+# No need to change
+hydra:
+  run:
+    dir: "."
+  output_subdir: ~
+

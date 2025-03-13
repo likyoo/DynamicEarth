@@ -1,0 +1,11 @@
+__pycache__
+*egg-info
+*.pth
+*.pt
+data
+output*
+weights
+.vscode
+outputs
+third_party/SimFeatUp/build
+*.so
