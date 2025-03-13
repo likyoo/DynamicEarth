@@ -33,7 +33,7 @@ git+https://github.com/IDEA-Research/detrex@main
 git+https://github.com/openai/CLIP.git@main
 pip install transformers==4.32.1 einops lvis
 wget https://hf-mirror.com/shenyunhang/APE/resolve/main/configs/LVISCOCOCOCOSTUFF_O365_OID_VGR_SA1B_REFCOCO_GQA_PhraseCut_Flickr30k/ape_deta/ape_deta_vitl_eva02_clip_vlf_lsj1024_cp_16x4_1080k_mdl_20230829_162438/model_final.pth
-wget https://hf-mirror.com/QuanSun/EVA-CLIP/resolve/main/EVA02_CLIP_E_psz14_plus_s9B.pt
+wget https://hf-mirror.com/QuanSun/EVA-CLIP/resolve/main/EVA02_CLIP_E_psz14_plus_s9B.pt # move to models/QuanSun/EVA-CLIP
 
 cd third_party
 git clone https://github.com/shenyunhang/APE

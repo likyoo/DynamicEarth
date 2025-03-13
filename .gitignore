@@ -9,3 +9,4 @@ weights
 outputs
 third_party/SimFeatUp/build
 *.so
+*.txt

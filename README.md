@@ -10,6 +10,7 @@
     <a href='https://github.com/BLING-1994' target='_blank'>Yupeng Deng</a><sup>2</sup>&emsp;
     <a href='https://github.com/fitzpchao' target='_blank'>Chao Pang</a><sup>3</sup>&emsp;
     <a href='https://github.com/xcarl1' target='_blank'>Zepeng Xin</a><sup>1</sup>&emsp;
+    <br>
     <a href='' target='_blank'>Hui Qiao</a><sup>4</sup>&emsp;
     <a href='https://gong-tl.github.io/' target='_blank'>Tieliang Gong</a><sup>1</sup>&emsp;
     <a href='https://gr.xjtu.edu.cn/en/web/dymeng' target='_blank'>Deyu Meng</a><sup>1</sup>&emsp;
@@ -157,15 +158,15 @@ We provide comprehensive evaluation scripts for the [LEVIR-CD](https://justchenh
 <div align="center">
 
 <div>
-<img src="https://github.com/user-attachments/assets/fa5ccb8e-cb59-447f-87b8-2caf30e8e5ee" width="70%"/>
+<img src="https://github.com/user-attachments/assets/fa5ccb8e-cb59-447f-87b8-2caf30e8e5ee" width="80%"/>
 </div>
 
 <div>
-<img src="https://github.com/user-attachments/assets/491156f3-ecd8-47b7-bc03-c5aa37c33e96" width="70%"/>
+<img src="https://github.com/user-attachments/assets/491156f3-ecd8-47b7-bc03-c5aa37c33e96" width="80%"/>
 </div>
 
 <div>
-<img src="https://github.com/user-attachments/assets/2e11f37a-4a89-4e3c-997c-af3cb42ae290" width="70%"/>
+<img src="https://github.com/user-attachments/assets/2e11f37a-4a89-4e3c-997c-af3cb42ae290" width="80%"/>
 </div>
 </div>
 

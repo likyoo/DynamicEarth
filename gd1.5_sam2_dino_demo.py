@@ -2,19 +2,16 @@ import os
 import argparse
 import torch
 import numpy as np
-from tqdm import tqdm
 from skimage.io import imread, imsave
 from torchvision.ops.boxes import batched_nms
 
 from sam2.build_sam import build_sam2
 from sam2.sam2_image_predictor import SAM2ImagePredictor
 
-from dynamic_earth import (
-    instance_ceg,
-    bitemporal_match,
-    get_model_and_processor,
-    extract_bbox_and_cls_from_dino1_5,
-)
+from dynamic_earth.utils import get_model_and_processor
+from dynamic_earth.comparator.ins_ceg import instance_ceg
+from dynamic_earth.comparator.bi_match import bitemporal_match
+from dynamic_earth.identifier.gd1_5_ext import extract_bbox_and_cls_from_dino1_5
 
 
 def merge_masks(change_masks, shape):

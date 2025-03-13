@@ -12,13 +12,10 @@ parent_directory = os.path.dirname(os.path.dirname(
     os.path.dirname(current_file_path)))
 sys.path.append(parent_directory)
 
-from dynamic_earth import (
-    bitemporal_match,
-    get_model_and_processor,
-    MaskProposal,
-    identify,
-    get_identifier
-)
+from dynamic_earth.sam_ext import MaskProposal
+from dynamic_earth.identifier.utils import identify, get_identifier
+from dynamic_earth.comparator.bi_match import bitemporal_match
+from dynamic_earth.utils import get_model_and_processor
 
 
 # Merge change masks into a single binary mask

@@ -115,7 +115,7 @@ def bitemporal_match(
         change_confidence = torch.zeros(len(mask_data), dtype=torch.float32, device=device)
 
         for i, mask in enumerate(mask_data):
-            binary_mask = torch.from_numpy(mask).to(device)
+            binary_mask = torch.from_numpy(mask).to(device, dtype=torch.bool)
             t1_mask_embed = torch.mean(img1_embed[:, binary_mask], dim=-1)
             t2_mask_embed = torch.mean(img2_embed[:, binary_mask], dim=-1)
             score = -F.cosine_similarity(t1_mask_embed, t2_mask_embed, dim=0)

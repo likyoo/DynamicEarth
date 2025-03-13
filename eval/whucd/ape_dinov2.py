@@ -10,13 +10,10 @@ parent_directory = os.path.dirname(os.path.dirname(
     os.path.dirname(current_file_path)))
 sys.path.append(parent_directory)
 
-from dynamic_earth import (
-    build_ape,
-    instance_ceg,
-    bitemporal_match,
-    get_model_and_processor,
-    extract_prediction_from_ape
-)
+from dynamic_earth.utils import get_model_and_processor
+from dynamic_earth.comparator.ins_ceg import instance_ceg
+from dynamic_earth.comparator.bi_match import bitemporal_match
+from dynamic_earth.identifier.ape_ext import build_ape, extract_prediction_from_ape
 
 
 # Merge change masks into a single binary mask

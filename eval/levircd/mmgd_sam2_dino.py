@@ -13,12 +13,10 @@ parent_directory = os.path.dirname(os.path.dirname(
     os.path.dirname(current_file_path)))
 sys.path.append(parent_directory)
 
-from dynamic_earth import (
-    build_mmdet_model,
-    extract_bbox_and_cls_from_mmgd,
-    bitemporal_match,
-    get_model_and_processor,
-    instance_ceg)
+from dynamic_earth.utils import get_model_and_processor
+from dynamic_earth.comparator.ins_ceg import instance_ceg
+from dynamic_earth.comparator.bi_match import bitemporal_match
+from dynamic_earth.identifier.mmgd_ext import build_mmdet_model, extract_bbox_and_cls_from_mmgd
 
 
 # Merge change masks into a single binary mask

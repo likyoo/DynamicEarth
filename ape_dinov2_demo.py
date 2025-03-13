@@ -4,13 +4,11 @@ import argparse
 import torch
 import numpy as np
 from skimage.io import imread, imsave
-from dynamic_earth import (
-    build_ape,
-    instance_ceg,
-    bitemporal_match,
-    get_model_and_processor,
-    extract_prediction_from_ape
-)
+
+from dynamic_earth.utils import get_model_and_processor
+from dynamic_earth.comparator.ins_ceg import instance_ceg
+from dynamic_earth.comparator.bi_match import bitemporal_match
+from dynamic_earth.identifier.ape_ext import build_ape, extract_prediction_from_ape
 
 def merge_masks(change_masks, shape):
     """Merges individual change masks into a single change mask.

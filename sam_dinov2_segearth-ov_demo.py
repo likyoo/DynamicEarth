@@ -6,13 +6,11 @@ import numpy as np
 from skimage.io import imread, imsave
 from segment_anything.utils.amg import rle_to_mask
 from segment_anything import sam_model_registry, sam_hq_model_registry
-from dynamic_earth import (
-    identify,
-    MaskProposal,
-    get_identifier,
-    bitemporal_match,
-    get_model_and_processor
-)
+
+from dynamic_earth.sam_ext import MaskProposal
+from dynamic_earth.identifier.utils import identify, get_identifier
+from dynamic_earth.comparator.bi_match import bitemporal_match
+from dynamic_earth.utils import get_model_and_processor
 
 
 def merge_masks(change_masks, shape):
