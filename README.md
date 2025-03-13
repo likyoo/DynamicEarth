@@ -36,7 +36,7 @@ Different change detection tasks: (a) Binary change detection aims at discoverin
 
 ----
 
-**【地表最强AI侦探上线！DynamicEarth：让遥感图像图像变化检测秒变"大家来找茬"Pro Max版🌍🔍】**
+**【地表最强(bushi)AI侦探上线！DynamicEarth：让遥感图像图像变化检测秒变"大家来找茬"Pro Max版🌍🔍】**
 
 各位看官！还在为传统变化检测模型"死记硬背"有限类别而头秃吗？我们打造的开放词汇变化检测（OVCD）黑科技，让AI秒变"火眼金睛"——无需996式训练，直接调用现成基础模型，就能在卫星图上玩转"大家来找茬"！
 
