@@ -1,10 +1,7 @@
-# dds cloudapi for Grounding DINO 1.5
+# dds cloudapi for Grounding DINO 1.5 - update to V2Task API
 from dds_cloudapi_sdk import Config
 from dds_cloudapi_sdk import Client
-from dds_cloudapi_sdk import DetectionTask
-from dds_cloudapi_sdk import TextPrompt
-from dds_cloudapi_sdk import DetectionModel
-from dds_cloudapi_sdk import DetectionTarget
+from dds_cloudapi_sdk.tasks.v2_task import V2Task
 
 import os
 import cv2
@@ -17,9 +14,10 @@ import supervision as sv
 def extract_bbox_and_cls_from_dino1_5(
     token,
     img_path,
-    text_prompt='house',
-    grounding_model=DetectionModel.GDino1_5_Pro,
+    text_prompt="house",
+    grounding_model="GroundingDino-1.5-Pro",
     box_threshold=0.2,
+    iou_threshold=0.5,
     with_slice_inference=False,
     slice_wh=(480, 480),
     overlap_ratio=(0.2, 0.2),
@@ -50,12 +48,19 @@ def extract_bbox_and_cls_from_dino1_5(
                 temp_filename = tmpfile.name
             cv2.imwrite(temp_filename, image_slice)
             image_url = client.upload_file(temp_filename)
-            task = DetectionTask(
-                image_url=image_url,
-                prompts=[TextPrompt(text=text_prompt)],
-                targets=[DetectionTarget.BBox],  # detect bbox
-                model=grounding_model,  # detect with GroundingDino-1.5-Pro model
-                bbox_threshold=box_threshold, # box confidence threshold
+            task = V2Task(
+                api_path="/v2/task/grounding_dino/detection",
+                api_body={
+                    "model": grounding_model,
+                    "image": image_url,
+                    "prompt": {
+                        "type": "text",
+                        "text": text_prompt
+                    },
+                    "targets": ["bbox"],
+                    "bbox_threshold": box_threshold,
+                    "iou_threshold": iou_threshold,
+                }
             )
             client.run_task(task)
             result = task.result
@@ -65,11 +70,11 @@ def extract_bbox_and_cls_from_dino1_5(
             input_boxes = []
             confidences = []
             class_ids = []
-            objects = result.objects
+            objects = result["objects"]
             for idx, obj in enumerate(objects):
-                input_boxes.append(obj.bbox)
-                confidences.append(obj.score)
-                cls_name = obj.category.lower().strip()
+                input_boxes.append(obj["bbox"])
+                confidences.append(obj["score"])
+                cls_name = obj["category"].lower().strip()
                 class_ids.append(class_name_to_id[cls_name])
             # ensure input_boxes with shape (_, 4)
             input_boxes = np.array(input_boxes).reshape(-1, 4)
@@ -92,18 +97,25 @@ def extract_bbox_and_cls_from_dino1_5(
     else:
         image_url = client.upload_file(img_path)
 
-        task = DetectionTask(
-            image_url=image_url,
-            prompts=[TextPrompt(text=text_prompt)],
-            targets=[DetectionTarget.BBox],  # detect bbox
-            model=grounding_model,  # detect with GroundingDINO-1.5-Pro model
-            bbox_threshold=box_threshold, # box confidence threshold
-        )
+        task = V2Task(
+                api_path="/v2/task/grounding_dino/detection",
+                api_body={
+                    "model": grounding_model,
+                    "image": image_url,
+                    "prompt": {
+                        "type": "text",
+                        "text": text_prompt
+                    },
+                    "targets": ["bbox"],
+                    "bbox_threshold": box_threshold,
+                    "iou_threshold": iou_threshold,
+                }
+            )
 
         client.run_task(task)
         result = task.result
 
-        objects = result.objects  # the list of detected objects
+        objects = result["objects"]  # the list of detected objects
 
         input_boxes = []
         confidences = []
@@ -111,9 +123,9 @@ def extract_bbox_and_cls_from_dino1_5(
         class_ids = []
 
         for idx, obj in enumerate(objects):
-            input_boxes.append(obj.bbox)
-            confidences.append(obj.score)
-            cls_name = obj.category.lower().strip()
+            input_boxes.append(obj["bbox"])
+            confidences.append(obj["score"])
+            cls_name = obj["category"].lower().strip()
             class_names.append(cls_name)
             class_ids.append(class_name_to_id[cls_name])
 
